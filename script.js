@@ -1,3 +1,5 @@
+const API_KEY = 'AIzaSyAJt8IECrF9htvCZnVbrVjjVRzNWvicZHM';
+
 document.addEventListener('DOMContentLoaded', () => {
     const searchForm = document.getElementById('search-form');
     const searchInput = document.getElementById('search-input');
@@ -38,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
         sidebar.classList.toggle('-translate-x-full');
         sidebarOverlay.classList.toggle('hidden');
     });
-
     sidebarOverlay.addEventListener('click', () => {
         sidebar.classList.add('-translate-x-full');
         sidebarOverlay.classList.add('hidden');
@@ -99,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const snippet = video.snippet;
             const videoId = (typeof video.id === 'object') ? video.id.videoId : video.id;
             if (!videoId) return;
-
             videoGrid.innerHTML += `
                 <div class="flex flex-col space-y-2 video-card cursor-pointer" data-video-id="${videoId}">
                     <div class="video-thumbnail-container">
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function formatNumber(num) {
         if (!num) return '0';
-        return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'K' : Math.sign(num)*Math.abs(num);
+        return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'K' : Math.sign(num)*Math.abs(num)
     }
 
     function formatSubscriberCount(num) {
