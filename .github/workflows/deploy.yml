@@ -15,10 +15,10 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
-      - name: Create config.js with API Key 🔑
+      - name: Replace API Key in script.js 🔑
         
         run: |
-          echo "const API_KEY = '${{ secrets.YOUTUBE_API_KEY }}';" > config.js
+          sed -i "s|__API_KEY_PLACEHOLDER__|${{ secrets.YOUTUBE_API_KEY }}|g" script.js
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
