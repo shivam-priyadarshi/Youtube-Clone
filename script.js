@@ -11,8 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoBtn = document.getElementById('logo-btn');
     const homeBtn = document.getElementById('home-btn');
     
-    const API_KEY = 'AIzaSyAJt8IECrF9htvCZnVbrVjjVRzNWvicZHM';
-    
     let player;
 
     searchForm.addEventListener('submit', e => {
@@ -40,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sidebar.classList.toggle('-translate-x-full');
         sidebarOverlay.classList.toggle('hidden');
     });
+
     sidebarOverlay.addEventListener('click', () => {
         sidebar.classList.add('-translate-x-full');
         sidebarOverlay.classList.add('hidden');
@@ -196,10 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
             commentsContainer.innerHTML = '<p class="text-gray-400">No comments found.</p>';
         }
     }
-
+    
     function formatNumber(num) {
         if (!num) return '0';
-        return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'K' : Math.sign(num)*Math.abs(num)
+        return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'K' : Math.sign(num)*Math.abs(num);
     }
 
     function formatSubscriberCount(num) {
