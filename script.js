@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const snippet = video.snippet;
             const videoId = (typeof video.id === 'object') ? video.id.videoId : video.id;
             if (!videoId) return;
+
             videoGrid.innerHTML += `
                 <div class="flex flex-col space-y-2 video-card cursor-pointer" data-video-id="${videoId}">
                     <div class="video-thumbnail-container">
@@ -200,7 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!num) return '0';
         return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'K' : Math.sign(num)*Math.abs(num)
     }
-
     function formatSubscriberCount(num) {
         if (!num) return '0';
         const number = parseInt(num);
