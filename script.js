@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoBtn = document.getElementById('logo-btn');
     const homeBtn = document.getElementById('home-btn');
     
+    const API_KEY = 'YOUR_API_KEY_PLACEHOLDER';
+    
     let player;
 
     searchForm.addEventListener('submit', e => {
