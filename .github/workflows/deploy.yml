@@ -8,7 +8,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
     permissions:
       contents: write
       
@@ -16,12 +15,13 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
-      - name: Replace API Key 🔑
+      - name: Create config.js with API Key 🔑
+        
         run: |
-              sed -i "s|const API_KEY = 'YOUR_API_KEY_PLACEHOLDER';|const API_KEY = '${{ secrets.YOUTUBE_API_KEY }}';|" script.js
+          echo "const API_KEY = '${{ secrets.YOUTUBE_API_KEY }}';" > config.js
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages 
-          folder: . 
+          folder: .
