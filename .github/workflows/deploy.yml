@@ -3,11 +3,15 @@ name: Deploy YouTube Clone to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main 
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
