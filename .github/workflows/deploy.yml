@@ -16,15 +16,15 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Replace API Key Token 🔑
-        
-        uses: cuchi/file-token-replacer@v1
+     
+        uses: jacobtomlinson/gha-find-replace@v3
         with:
-          path: 'script.js'
-          token: '__API_KEY_PLACEHOLDER__'
-          value: '${{ secrets.YOUTUBE_API_KEY }}'
+          find: "__API_KEY_PLACEHOLDER__"
+          replace: "${{ secrets.YOUTUBE_API_KEY }}"
+          include: "script.js"
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages 
-          folder: . 
+          folder: 
