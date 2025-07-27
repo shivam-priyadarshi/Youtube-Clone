@@ -1,6 +1,7 @@
 const API_KEY = '__API_KEY_PLACEHOLDER__';
 
 document.addEventListener('DOMContentLoaded', () => {
+
     const searchForm = document.getElementById('search-form');
     const searchInput = document.getElementById('search-input');
     const mainContent = document.getElementById('main-content');
@@ -201,7 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!num) return '0';
         return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'K' : Math.sign(num)*Math.abs(num)
     }
-
     function formatSubscriberCount(num) {
         if (!num) return '0';
         const number = parseInt(num);
