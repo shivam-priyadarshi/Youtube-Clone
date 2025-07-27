@@ -17,11 +17,11 @@ jobs:
 
       - name: Replace API Key Token 🔑
         
-        uses: a-tokyo/action-string-replace@v1
+        uses: jacobtomlinson/gha-find-replace@v3
         with:
-          file: "script.js"
-          pattern: "__API_KEY_PLACEHOLDER__"
-          replacement: "${{ secrets.YOUTUBE_API_KEY }}"
+          find: "__API_KEY_PLACEHOLDER__"
+          replace: "${{ secrets.YOUTUBE_API_KEY }}"
+          include: "script.js"
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
