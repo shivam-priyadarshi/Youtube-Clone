@@ -15,25 +15,11 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
-      - name: Replace API Key Token 🔑
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "__API_KEY_PLACEHOLDER__"
-          replace: "${{ secrets.YOUTUBE_API_KEY }}"
-          include: "script.js"
-
-      - name: Verify API Key Replacement 🕵️
+      - name: Inject API Key into script.js 🔑
         
         run: |
-          echo "--- Verifying script.js content ---"
-          if grep -q "${{ secrets.YOUTUBE_API_KEY }}" script.js; then
-            echo "✅ SUCCESS: API Key was found in script.js."
-          else
-            echo "❌ FAILURE: API Key was NOT found in script.js after replacement."
-            echo "--- The script.js file still contains the placeholder: ---"
-            cat script.js
-            exit 1 # This will cause the workflow to fail if the key is not found.
-          fi
+          sed -i "s|__API_KEY_PLACEHOLDER__|${{ secrets.YOUTUBE_API_KEY }}|g" script.js
+          echo "✅ API Key has been injected."
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
