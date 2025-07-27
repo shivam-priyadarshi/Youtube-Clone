@@ -15,15 +15,17 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
-      - name: Inject API Key into script.js 🔑
+      - name: Replace API Key Token 🔑
         
-        run: |
-          sed -i "s|__API_KEY_PLACEHOLDER__|${{ secrets.YOUTUBE_API_KEY }}|g" script.js
-          echo "✅ API Key has been injected."
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "__API_KEY_PLACEHOLDER__"
+          replace: "${{ secrets.YOUTUBE_API_KEY }}"
+          include: "script.js"
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages
-          folder: .
+          branch: gh-pages 
+          folder: . 
           token: ${{ secrets.GITHUB_TOKEN }}
