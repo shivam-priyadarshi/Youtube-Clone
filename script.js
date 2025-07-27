@@ -1,6 +1,7 @@
 const API_KEY = '__API_KEY_PLACEHOLDER__';
 
 document.addEventListener('DOMContentLoaded', () => {
+
     const searchForm = document.getElementById('search-form');
     const searchInput = document.getElementById('search-input');
     const mainContent = document.getElementById('main-content');
